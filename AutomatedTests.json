@@ -1,0 +1,258 @@
+{
+    "name": "AutomatedTests",
+    "description": "",
+    "created": 1520030878858,
+    "componentType": "STANDARD",
+    "ignoreQualifiers": 0,
+    "importAutomatically": false,
+    "useVfs": true,
+    "active": true,
+    "deleted": false,
+    "defaultVersionType": "FULL",
+    "cleanupDaysToKeep": 0,
+    "cleanupCountToKeep": 0,
+    "envPropDefs": [],
+    "resPropDefs": [],
+    "versionPropDefs": [],
+    "propSheetGroup": {"propSheets": [
+        {
+            "name": "custom",
+            "properties": []
+        },
+        {
+            "name": "template",
+            "properties": []
+        }
+    ]},
+    "processes": [{
+        "name": "RunPerfTests",
+        "description": "",
+        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+        "takesVersion": false,
+        "status": "",
+        "active": true,
+        "path": "components\/161e8e68-c9ca-fd67-986a-096ec8ff8489\/processes\/161e8e83-3128-6fd3-1859-fed15c7ef0f3",
+        "deleted": false,
+        "propDefs": [],
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "964a876e4cce8d47a9fe245eb3f0d8",
+                    "from": "Create Snapshot Of Environment",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "Run RPT Test",
+                    "from": "GetStockTraderNodePort",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "GetDateTime",
+                    "from": "Run RPT Test",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "964a876e4cce8d47a9fe245eb3f0d8",
+                    "from": "Run RPT Test",
+                    "type": "FAILURE",
+                    "value": ""
+                },
+                {
+                    "to": "GetStockTraderNodePort",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "Create Snapshot Of Environment",
+                    "from": "GetDateTime",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "GetStockTraderNodePort",
+                    "x": -75,
+                    "y": 130,
+                    "h": 70,
+                    "w": 260
+                },
+                {
+                    "name": "Create Snapshot Of Environment",
+                    "x": -42.853223593964316,
+                    "y": 490,
+                    "h": 70,
+                    "w": 350
+                },
+                {
+                    "name": "964a876e4cce8d47a9fe245eb3f0d8",
+                    "x": -30.353223593964316,
+                    "y": 610,
+                    "h": 80,
+                    "w": 120
+                },
+                {
+                    "name": "GetDateTime",
+                    "x": 2.146776406035684,
+                    "y": 370,
+                    "h": 70,
+                    "w": 260
+                },
+                {
+                    "name": "Run RPT Test",
+                    "x": -61.42661179698216,
+                    "y": 250,
+                    "h": 70,
+                    "w": 230
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "3ab10be9-9fa1-47dd-9a70-2e4f715ce48e",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "964a876e4cce8d47a9fe245eb3f0d8",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": false,
+                    "showHidden": false,
+                    "impersonationUseSudo": false,
+                    "pluginVersion": 1,
+                    "commandName": "Run RPT Test",
+                    "pluginName": "IBM Rational Test Workbench - Performance Tester",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "imlocation": "\/opt\/ibm\/InstallationManager",
+                        "workspace": "\/home\/ibmuser\/IBM\/rationalsdp\/stocktrader",
+                        "project": "StockTrader",
+                        "suite": "\/Schedules\/StockTraderSchedule.testsuite",
+                        "varfile": "${p:GetStockTraderNodePort\/RPT_Variables_File}",
+                        "configfile": "",
+                        "results": "StockTraderSchedule",
+                        "overwrite": "true",
+                        "quiet": "false",
+                        "users": "5",
+                        "vmargs": "",
+                        "exportlog": "",
+                        "exportstats": "",
+                        "exportstatreportlist": "",
+                        "usercomments": ""
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "Run RPT Test",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": false,
+                    "showHidden": false,
+                    "impersonationUseSudo": false,
+                    "pluginVersion": 77,
+                    "commandName": "Create Snapshot Of Environment",
+                    "pluginName": "IBM UrbanCode Deploy Applications",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "application": "${p:application.name}",
+                        "environment": "${p:environment.name}",
+                        "name": "TestsPassed-${p:GetDateTime\/datetime}",
+                        "description": "All performance tests passed"
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "Create Snapshot Of Environment",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": false,
+                    "showHidden": false,
+                    "impersonationUseSudo": false,
+                    "pluginVersion": 10,
+                    "commandName": "Run Groovy Script",
+                    "pluginName": "Groovy",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "groovyHome": "${GROOVY_HOME}",
+                        "scriptBody": "import java.text.SimpleDateFormat\n\n\/\/ Get date and time\ndef today = new Date()\ndef formattedDateTime = new SimpleDateFormat(\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\").format(today)\noutProps.put(\"datetime\",formattedDateTime)\n"
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "GetDateTime",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": false,
+                    "showHidden": false,
+                    "impersonationUseSudo": false,
+                    "postProcessingScript": {
+                        "id": "16304130-ddbd-ab4b-a951-39122d4acc85",
+                        "name": "NODE_PORT",
+                        "description": "Create output properties for NodePort, Proxy IP, and RPT variables file",
+                        "body": "var exit = properties.get('exitCode');\n\nscanner.register(\"NODE_PORT=\", function(lineNumber, line) {\n    var nodePort=line.replace(\"NODE_PORT=\", \"\");\n    properties.put(\"Trader_svc_NodePort\", nodePort);\n});\n\nscanner.register(\"PROXY_IP=\", function(lineNumber, line) {\n    var proxyIP=line.replace(\"PROXY_IP=\", \"\");\n    properties.put(\"Proxy_Host_IP\", proxyIP);\n});\n\nscanner.register(\"RPTVARSFILE=\", function(lineNumber, line) {\n    var variablesFile=line.replace(\"RPTVARSFILE=\", \"\");\n    properties.put(\"RPT_Variables_File\", variablesFile);\n});\n\nscanner.scan();\n\nif (exit == 0) {\n    properties.put('Status', 'Success');\n}\nelse {\n    properties.put('Status', 'Failure');\n}\n"
+                    },
+                    "pluginVersion": 9,
+                    "commandName": "Shell",
+                    "pluginName": "Shell",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "directoryOffset": ".",
+                        "shellInterpreter": "",
+                        "scriptBody": "#!\/bin\/bash\n\n# Get the NodePort for the StockTrader service and the cluster proxy node IP\nNODE_PORT=$(kubectl --kubeconfig=\/home\/ibmuser\/.kube\/config --context=bluedemocluster.icp-context --namespace=default get services -o jsonpath=\"{.spec.ports[0].nodePort}\" trader-service)\nPROXY_IP=$(kubectl --kubeconfig=\/home\/ibmuser\/.kube\/config --context=bluedemocluster.icp-context --namespace=default get nodes -o jsonpath=\"{.items[0].status.addresses[0].address}\")\n\n# Create a variables file with the NodePort and Proxy Host IP to be used by the RPT schedule playback.\nVARFILE=$(pwd)\/rptvars.xml\necho \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\" > ${VARFILE}\necho \"<inits>\" >> ${VARFILE}\necho \"     <variable_init value=\\\"${NODE_PORT}\\\" name=\\\"StockTrader_Host_Port\\\"\/>\"  >> ${VARFILE}\necho \"     <variable_init value=\\\"${PROXY_IP}\\\" name=\\\"StockTrader_Host\\\"\/>\"  >> ${VARFILE}\necho \"<\/inits>\" >> ${VARFILE}\n\necho RPTVARSFILE=${VARFILE}\necho NODE_PORT=${NODE_PORT}\necho PROXY_IP=${PROXY_IP}\necho\n",
+                        "runAsDaemon": "false",
+                        "outputFile": ""
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "GetStockTraderNodePort",
+                    "children": []
+                }
+            ]
+        }
+    }],
+    "configTemplates": [],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [{
+        "id": "161d8b5c-bdef-7c3a-b2ff-4f9385c9f863",
+        "name": "Tests",
+        "color": "#17AF4B",
+        "description": "",
+        "objectType": "Component"
+    }]
+}
