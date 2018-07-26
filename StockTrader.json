@@ -1,0 +1,1586 @@
+{
+    "name": "StockTrader",
+    "description": "",
+    "enforceCompleteSnapshots": false,
+    "propSheet": {"properties": []},
+    "templatePropSheet": {
+        "name": "template",
+        "properties": []
+    },
+    "components": [
+        {
+            "name": "AutomatedTests",
+            "description": "",
+            "created": 1520030878858,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "RunPerfTests",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": false,
+                "status": "",
+                "active": true,
+                "path": "components\/161e8e68-c9ca-fd67-986a-096ec8ff8489\/processes\/161e8e83-3128-6fd3-1859-fed15c7ef0f3",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "964a876e4cce8d47a9fe245eb3f0d8",
+                            "from": "Create Snapshot Of Environment",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Run RPT Test",
+                            "from": "GetStockTraderNodePort",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "GetDateTime",
+                            "from": "Run RPT Test",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "964a876e4cce8d47a9fe245eb3f0d8",
+                            "from": "Run RPT Test",
+                            "type": "FAILURE",
+                            "value": ""
+                        },
+                        {
+                            "to": "GetStockTraderNodePort",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Create Snapshot Of Environment",
+                            "from": "GetDateTime",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "GetStockTraderNodePort",
+                            "x": -75,
+                            "y": 130,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "Create Snapshot Of Environment",
+                            "x": -42.853223593964316,
+                            "y": 490,
+                            "h": 70,
+                            "w": 350
+                        },
+                        {
+                            "name": "964a876e4cce8d47a9fe245eb3f0d8",
+                            "x": -30.353223593964316,
+                            "y": 610,
+                            "h": 80,
+                            "w": 120
+                        },
+                        {
+                            "name": "GetDateTime",
+                            "x": 2.146776406035684,
+                            "y": 370,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "Run RPT Test",
+                            "x": -61.42661179698216,
+                            "y": 250,
+                            "h": 70,
+                            "w": 230
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "3ab10be9-9fa1-47dd-9a70-2e4f715ce48e",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "964a876e4cce8d47a9fe245eb3f0d8",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 1,
+                            "commandName": "Run RPT Test",
+                            "pluginName": "IBM Rational Test Workbench - Performance Tester",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "imlocation": "\/opt\/ibm\/InstallationManager",
+                                "workspace": "\/home\/ibmuser\/IBM\/rationalsdp\/stocktrader",
+                                "project": "StockTrader",
+                                "suite": "\/Schedules\/StockTraderSchedule.testsuite",
+                                "varfile": "${p:GetStockTraderNodePort\/RPT_Variables_File}",
+                                "configfile": "",
+                                "results": "StockTraderSchedule",
+                                "overwrite": "true",
+                                "quiet": "false",
+                                "users": "5",
+                                "vmargs": "",
+                                "exportlog": "",
+                                "exportstats": "",
+                                "exportstatreportlist": "",
+                                "usercomments": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Run RPT Test",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 77,
+                            "commandName": "Create Snapshot Of Environment",
+                            "pluginName": "IBM UrbanCode Deploy Applications",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "application": "${p:application.name}",
+                                "environment": "${p:environment.name}",
+                                "name": "TestsPassed-${p:GetDateTime\/datetime}",
+                                "description": "All performance tests passed"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Create Snapshot Of Environment",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Run Groovy Script",
+                            "pluginName": "Groovy",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "groovyHome": "${GROOVY_HOME}",
+                                "scriptBody": "import java.text.SimpleDateFormat\n\n\/\/ Get date and time\ndef today = new Date()\ndef formattedDateTime = new SimpleDateFormat(\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\").format(today)\noutProps.put(\"datetime\",formattedDateTime)\n"
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "GetDateTime",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "postProcessingScript": {
+                                "id": "16304130-ddbd-ab4b-a951-39122d4acc85",
+                                "name": "NODE_PORT",
+                                "description": "Create output properties for NodePort, Proxy IP, and RPT variables file",
+                                "body": "var exit = properties.get('exitCode');\n\nscanner.register(\"NODE_PORT=\", function(lineNumber, line) {\n    var nodePort=line.replace(\"NODE_PORT=\", \"\");\n    properties.put(\"Trader_svc_NodePort\", nodePort);\n});\n\nscanner.register(\"PROXY_IP=\", function(lineNumber, line) {\n    var proxyIP=line.replace(\"PROXY_IP=\", \"\");\n    properties.put(\"Proxy_Host_IP\", proxyIP);\n});\n\nscanner.register(\"RPTVARSFILE=\", function(lineNumber, line) {\n    var variablesFile=line.replace(\"RPTVARSFILE=\", \"\");\n    properties.put(\"RPT_Variables_File\", variablesFile);\n});\n\nscanner.scan();\n\nif (exit == 0) {\n    properties.put('Status', 'Success');\n}\nelse {\n    properties.put('Status', 'Failure');\n}\n"
+                            },
+                            "pluginVersion": 9,
+                            "commandName": "Shell",
+                            "pluginName": "Shell",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "shellInterpreter": "",
+                                "scriptBody": "#!\/bin\/bash\n\n# Get the NodePort for the StockTrader service and the cluster proxy node IP\nNODE_PORT=$(kubectl --kubeconfig=\/home\/ibmuser\/.kube\/config --context=bluedemocluster.icp-context --namespace=default get services -o jsonpath=\"{.spec.ports[0].nodePort}\" trader-service)\nPROXY_IP=$(kubectl --kubeconfig=\/home\/ibmuser\/.kube\/config --context=bluedemocluster.icp-context --namespace=default get nodes -o jsonpath=\"{.items[0].status.addresses[0].address}\")\n\n# Create a variables file with the NodePort and Proxy Host IP to be used by the RPT schedule playback.\nVARFILE=$(pwd)\/rptvars.xml\necho \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\" > ${VARFILE}\necho \"<inits>\" >> ${VARFILE}\necho \"     <variable_init value=\\\"${NODE_PORT}\\\" name=\\\"StockTrader_Host_Port\\\"\/>\"  >> ${VARFILE}\necho \"     <variable_init value=\\\"${PROXY_IP}\\\" name=\\\"StockTrader_Host\\\"\/>\"  >> ${VARFILE}\necho \"<\/inits>\" >> ${VARFILE}\n\necho RPTVARSFILE=${VARFILE}\necho NODE_PORT=${NODE_PORT}\necho PROXY_IP=${PROXY_IP}\necho\n",
+                                "runAsDaemon": "false",
+                                "outputFile": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "GetStockTraderNodePort",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "161d8b5c-bdef-7c3a-b2ff-4f9385c9f863",
+                "name": "Tests",
+                "color": "#17AF4B",
+                "description": "",
+                "objectType": "Component"
+            }]
+        },
+        {
+            "name": "Database",
+            "description": "Component to perform any required database operations",
+            "created": 1520544770660,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "custom",
+                    "properties": []
+                }
+            ]},
+            "processes": [{
+                "name": "CreateOwnerIndex",
+                "description": "",
+                "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                "takesVersion": true,
+                "inventoryActionType": "ADD",
+                "status": "Active",
+                "configActionType": "ADD",
+                "active": true,
+                "path": "components\/1620787e-a6da-f301-cfcf-32c876a22d26\/processes\/162079bb-069f-5781-78c6-6a0fd859398f",
+                "deleted": false,
+                "propDefs": [],
+                "rootActivity": {
+                    "edges": [
+                        {
+                            "to": "Download Artifacts",
+                            "type": "ALWAYS",
+                            "value": ""
+                        },
+                        {
+                            "to": "Execute SQL Scripts",
+                            "from": "Download Artifacts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        },
+                        {
+                            "to": "98b774335fa8802145fd3493187c28",
+                            "from": "Execute SQL Scripts",
+                            "type": "SUCCESS",
+                            "value": ""
+                        }
+                    ],
+                    "offsets": [
+                        {
+                            "name": "Download Artifacts",
+                            "x": -75,
+                            "y": 180,
+                            "h": 70,
+                            "w": 260
+                        },
+                        {
+                            "name": "Execute SQL Scripts",
+                            "x": -80,
+                            "y": 350,
+                            "h": 70,
+                            "w": 270
+                        },
+                        {
+                            "name": "98b774335fa8802145fd3493187c28",
+                            "x": -5,
+                            "y": 520,
+                            "h": 80,
+                            "w": 120
+                        }
+                    ],
+                    "layoutMode": "auto",
+                    "type": "graph",
+                    "name": "a00b5238-aa41-4996-847f-9b8d86b8d664",
+                    "children": [
+                        {
+                            "type": "finish",
+                            "name": "98b774335fa8802145fd3493187c28",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 29,
+                            "commandName": "Download Artifacts",
+                            "pluginName": "IBM UrbanCode Deploy Versioned File Storage",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "directoryOffset": ".",
+                                "artifactSetBaseDir": "",
+                                "fileIncludePatterns": "**\/*",
+                                "fileExcludePatterns": "",
+                                "syncMode": "true",
+                                "fullVerification": "true",
+                                "setFileExecuteBits": "false",
+                                "verifyFileIntegrity": "false",
+                                "versionId": "${p:version.id}",
+                                "serverUrl": "${p:server.url}",
+                                "compId": "${p:component.id}",
+                                "resId": "${p:resource.id}",
+                                "charset": "",
+                                "label": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Download Artifacts",
+                            "children": []
+                        },
+                        {
+                            "allowFailure": false,
+                            "useImpersonation": false,
+                            "showHidden": false,
+                            "impersonationUseSudo": false,
+                            "pluginVersion": 10,
+                            "commandName": "Execute SQL Scripts",
+                            "pluginName": "SQL-JDBC",
+                            "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                            "properties": {
+                                "jdbcDriver": "com.ibm.db2.jcc.DB2Driver",
+                                "jdbcJar": "${p:componentProcess.defaultWorkDir}\/db2jcc.jar",
+                                "connectionString": "${p:dbConnectionURL}",
+                                "username": "db2inst1",
+                                "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyk3yq|OFpqj67h9tjmXheetSxFGg==|\/lXgo2j8WiuzP5LWrKPQNg==}",
+                                "passScript": "",
+                                "files": "",
+                                "includes": "**\/*.sql",
+                                "excludes": "",
+                                "delimiter": ";",
+                                "autocommit": "false",
+                                "print": "false",
+                                "onerror": "abort",
+                                "keepformat": "",
+                                "showWarnings": "",
+                                "treatWarningsAsErrors": ""
+                            },
+                            "cachedAuthTokenRestriction": {
+                                "name": "System Default",
+                                "description": "Used by default for any plugin steps without a specified token restriction",
+                                "restrictions": [{
+                                    "verb": "ALL",
+                                    "url": "\/*"
+                                }]
+                            },
+                            "type": "plugin",
+                            "name": "Execute SQL Scripts",
+                            "children": []
+                        }
+                    ]
+                }
+            }],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": []
+        },
+        {
+            "name": "stocktrader-all-in-one.yaml",
+            "description": "",
+            "created": 1520386746722,
+            "componentType": "STANDARD",
+            "ignoreQualifiers": 0,
+            "importAutomatically": false,
+            "useVfs": true,
+            "active": true,
+            "deleted": false,
+            "defaultVersionType": "FULL",
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "componentTemplate": {
+                "securityResourceId": "161ae509-6796-0575-a5a7-a059c1e9ada4",
+                "path": "componentTemplates\/161ae509-67c7-204e-ef2b-1027487cc4bf",
+                "name": "Kubernetes",
+                "description": "Template for a component containing a Kubernetes YAML file",
+                "ignoreQualifiers": 0,
+                "componentType": "STANDARD",
+                "tags": [],
+                "active": true,
+                "envPropDefs": [],
+                "resPropDefs": [],
+                "propDefs": [],
+                "properties": [],
+                "processes": [{
+                    "name": "Process and Apply YAML File",
+                    "description": "",
+                    "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+                    "takesVersion": true,
+                    "inventoryActionType": "ADD",
+                    "status": "Active",
+                    "configActionType": "ADD",
+                    "active": true,
+                    "path": "componentTemplates\/161ae509-67c7-204e-ef2b-1027487cc4bf\/processes\/161ae509-6a3b-1d72-86bb-37794046537d",
+                    "deleted": false,
+                    "propDefs": [],
+                    "rootActivity": {
+                        "edges": [
+                            {
+                                "to": "Process YAML File",
+                                "from": "Replace Tokens",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "dc49fce3ec74e6540cb9c65d9637fd",
+                                "from": "Apply Resources",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Replace Tokens",
+                                "from": "Download Artifacts",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Download Artifacts",
+                                "from": "Clean working directory",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Apply Resources",
+                                "from": "Process YAML File",
+                                "type": "SUCCESS",
+                                "value": ""
+                            },
+                            {
+                                "to": "Clean working directory",
+                                "type": "ALWAYS",
+                                "value": ""
+                            }
+                        ],
+                        "offsets": [
+                            {
+                                "name": "dc49fce3ec74e6540cb9c65d9637fd",
+                                "x": -5,
+                                "y": 950,
+                                "h": 100,
+                                "w": 160
+                            },
+                            {
+                                "name": "Clean working directory",
+                                "x": -205,
+                                "y": 150,
+                                "h": 110,
+                                "w": 560
+                            },
+                            {
+                                "name": "Replace Tokens",
+                                "x": -130,
+                                "y": 470,
+                                "h": 110,
+                                "w": 410
+                            },
+                            {
+                                "name": "Apply Resources",
+                                "x": -135,
+                                "y": 790,
+                                "h": 110,
+                                "w": 420
+                            },
+                            {
+                                "name": "Process YAML File",
+                                "x": -150,
+                                "y": 630,
+                                "h": 110,
+                                "w": 450
+                            },
+                            {
+                                "name": "Download Artifacts",
+                                "x": -145,
+                                "y": 310,
+                                "h": 110,
+                                "w": 440
+                            }
+                        ],
+                        "layoutMode": "auto",
+                        "type": "graph",
+                        "name": "a6e7c057-9385-4b28-812c-b4f7ff736450",
+                        "children": [
+                            {
+                                "type": "finish",
+                                "name": "dc49fce3ec74e6540cb9c65d9637fd",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 63,
+                                "commandName": "Delete Files and Directories",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "baseDir": ".",
+                                    "includes": "**\/*\n*",
+                                    "excludes": "",
+                                    "followSymlinks": "false",
+                                    "caseSensitive": "true"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Clean working directory",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 29,
+                                "commandName": "Download Artifacts",
+                                "pluginName": "IBM UrbanCode Deploy Versioned File Storage",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "directoryOffset": ".",
+                                    "artifactSetBaseDir": "",
+                                    "fileIncludePatterns": "**\/*",
+                                    "fileExcludePatterns": "",
+                                    "syncMode": "true",
+                                    "fullVerification": "true",
+                                    "setFileExecuteBits": "false",
+                                    "verifyFileIntegrity": "false",
+                                    "versionId": "${p:version.id}",
+                                    "serverUrl": "${p:server.url}",
+                                    "compId": "${p:component.id}",
+                                    "resId": "${p:resource.id}",
+                                    "charset": "",
+                                    "label": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Download Artifacts",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 14,
+                                "commandName": "Process YAML File",
+                                "pluginName": "Kubernetes",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "yamlFile": "",
+                                    "alwaysVersionFromYaml": "${p?:environment\/alwaysApplyVersionsFromYaml}",
+                                    "componentTemplate": "Docker Template",
+                                    "authToken": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyk3yq|pn9tUeCPnBLsRumE60EJFA==|Sebmw4+q67AwYso6SeXrXA==}",
+                                    "resource": "${p:resource.id}",
+                                    "resourcePath": "${p:resource.path}",
+                                    "application": "${p:application.id}",
+                                    "version": "${p:version.name}",
+                                    "sourceConfigType": "Docker",
+                                    "environmentName": "${p:environment.name}",
+                                    "environment": "${p:environment.id}",
+                                    "componentProcessRequest": "${p:request.id}",
+                                    "applicationProcessRequest": "${p:parentRequest.id}"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Process YAML File",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": true,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 14,
+                                "commandName": "Apply Resources",
+                                "pluginName": "Kubernetes",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "url": "",
+                                    "username": "",
+                                    "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyk3yq|DVD1v6V0iH7Jild20aQW7A==|7xUA5aVkN7\/U66HnMIdi4w==}",
+                                    "namespace": "",
+                                    "path": "",
+                                    "globals": "${p?:environment\/KUBECTL-OPTS}",
+                                    "flags": "",
+                                    "filename": "ibm-ucd-kubernetes.yaml"
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Apply Resources",
+                                "children": []
+                            },
+                            {
+                                "allowFailure": false,
+                                "useImpersonation": false,
+                                "showHidden": false,
+                                "impersonationUseSudo": false,
+                                "pluginVersion": 63,
+                                "commandName": "Replace Tokens",
+                                "pluginName": "File Utils",
+                                "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                                "properties": {
+                                    "includes": "**\/*",
+                                    "excludes": "",
+                                    "envPropValues": "${p:environment\/allProperties}",
+                                    "propertyPrefix": "",
+                                    "explicitTokens": "",
+                                    "startDelimiter": "@",
+                                    "endDelimiter": "@",
+                                    "propFile": "replace_tokens.properties",
+                                    "dir": "",
+                                    "customEncoding": ""
+                                },
+                                "cachedAuthTokenRestriction": {
+                                    "name": "System Default",
+                                    "description": "Used by default for any plugin steps without a specified token restriction",
+                                    "restrictions": [{
+                                        "verb": "ALL",
+                                        "url": "\/*"
+                                    }]
+                                },
+                                "type": "plugin",
+                                "name": "Replace Tokens",
+                                "children": []
+                            }
+                        ]
+                    }
+                }],
+                "genericProcesses": [],
+                "teamMappings": []
+            },
+            "sourceConfigPluginName": "Git",
+            "envPropDefs": [],
+            "resPropDefs": [],
+            "versionPropDefs": [],
+            "propSheetGroup": {"propSheets": [
+                {
+                    "name": "custom",
+                    "properties": []
+                },
+                {
+                    "name": "template",
+                    "properties": []
+                },
+                {
+                    "name": "GitComponentProperties",
+                    "properties": [
+                        {
+                            "name": "branch",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "excludes",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "extensions",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "gitPath",
+                            "value": "git",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "includes",
+                            "value": "stocktrader-all-in-one.yaml",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "password",
+                            "value": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyk3yq|udYAV8ipImyqtR9VJ\/uIvQ==|j6zVduSp6DC0jICSClggZg==}",
+                            "description": "",
+                            "secure": true
+                        },
+                        {
+                            "name": "recursive",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "repoUrl",
+                            "value": "https:\/\/github.com\/tpneal\/Think2018-7232",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "saveFileExecuteBits",
+                            "value": "false",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "username",
+                            "description": "",
+                            "secure": false
+                        },
+                        {
+                            "name": "watchTags",
+                            "value": "true",
+                            "description": "",
+                            "secure": false
+                        }
+                    ]
+                }
+            ]},
+            "processes": [],
+            "configTemplates": [],
+            "genericProcesses": [],
+            "teamMappings": [],
+            "tags": [{
+                "id": "161ae513-d649-a969-6ddf-70a52a960b58",
+                "name": "Kubernetes",
+                "color": "#008ABF",
+                "description": "",
+                "objectType": "Component"
+            }]
+        }
+    ],
+    "environments": [
+        {
+            "name": "TEST",
+            "description": "",
+            "color": "#00B2EF",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": false,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 0,
+            "active": true,
+            "environmentTemplate": "QA",
+            "propSheet": {"properties": [
+                {
+                    "name": "dbConnectionURL",
+                    "value": "jdbc:db2:\/\/10.0.0.1:31188\/trader",
+                    "description": "JDBC connection URL for StockTrader database",
+                    "secure": false
+                },
+                {
+                    "name": "KUBECTL-OPTS",
+                    "value": "--kubeconfig=\/home\/skytap\/.kube\/config\n--context=bluedemocluster.icp-context\n--namespace=default",
+                    "description": "kubectl options for the env, one per line",
+                    "secure": false
+                },
+                {
+                    "name": "registryHostAndRepo",
+                    "value": "bluedemocluster.icp:8500\/default",
+                    "description": "image registry location",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": [{
+                    "name": "alwaysApplyVersionsFromYaml",
+                    "value": "false",
+                    "description": "",
+                    "secure": false
+                }]
+            },
+            "baseResources": [{
+                "path": "\/StockTrader-1\/TEST",
+                "id": "161fe224-7396-34ae-6d70-839f0334f30c"
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "AutomatedTests"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Database"
+                },
+                {
+                    "properties": [],
+                    "componentName": "stocktrader-all-in-one.yaml"
+                }
+            ],
+            "versionConditions": [],
+            "teamMappings": []
+        },
+        {
+            "name": "PROD",
+            "description": "",
+            "color": "#17AF4A",
+            "requireApprovals": false,
+            "noSelfApprovals": false,
+            "exemptProcesses": [],
+            "lockSnapshots": false,
+            "requireSnapshots": false,
+            "cleanupDaysToKeep": 0,
+            "cleanupCountToKeep": 0,
+            "enableProcessHistoryCleanup": false,
+            "useSystemDefaultDays": true,
+            "historyCleanupDaysToKeep": 365,
+            "order": 1,
+            "active": true,
+            "environmentTemplate": "PROD",
+            "propSheet": {"properties": [
+                {
+                    "name": "dbConnectionURL",
+                    "value": "jdbc:db2:\/\/10.0.0.2:50000\/trader",
+                    "description": "JDBC connection URL for StockTrader database",
+                    "secure": false
+                },
+                {
+                    "name": "KUBECTL-OPTS",
+                    "value": "--kubeconfig=\/home\/skytap\/.kube\/config\n--context=bluedemocluster.icp-context\n--namespace=production",
+                    "description": "kubectl options for the env, one per line",
+                    "secure": false
+                },
+                {
+                    "name": "registryHostAndRepo",
+                    "value": "bluedemocluster.icp:8500\/production",
+                    "description": "image registry location",
+                    "secure": false
+                }
+            ]},
+            "templatePropSheet": {
+                "name": "template",
+                "properties": [{
+                    "name": "alwaysApplyVersionsFromYaml",
+                    "value": "false",
+                    "description": "",
+                    "secure": false
+                }]
+            },
+            "baseResources": [{
+                "path": "\/StockTrader-1\/PROD",
+                "id": "161fe224-5cfd-53f7-fb22-48ab080bf238"
+            }],
+            "componentPropSheets": [
+                {
+                    "properties": [],
+                    "componentName": "AutomatedTests"
+                },
+                {
+                    "properties": [],
+                    "componentName": "Database"
+                },
+                {
+                    "properties": [],
+                    "componentName": "stocktrader-all-in-one.yaml"
+                }
+            ],
+            "versionConditions": [],
+            "teamMappings": []
+        }
+    ],
+    "statuses": [],
+    "processes": [],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": [],
+    "applicationTemplate": {
+        "name": "Kubernetes Application Template",
+        "description": "Application Template for Kubernetes deployments",
+        "applicationProcessList": [{
+            "name": "Deploy from YAML file",
+            "description": "",
+            "inventoryManagementType": "AUTOMATIC",
+            "offlineAgentHandling": "PRE_EXECUTION_CHECK",
+            "rootActivity": {
+                "edges": [
+                    {
+                        "to": "c0bdd77a3d5c01e149f643cd5ac8da",
+                        "from": "Always Apply Image Tags from YAML",
+                        "type": "VALUE",
+                        "value": ""
+                    },
+                    {
+                        "to": "Always Apply Image Tags from YAML",
+                        "from": "36da1c52b7e93bfe61e083ae7c00c4",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "bfc66e2564e41c000b3238afe39dc0",
+                        "from": "RunTests",
+                        "type": "VALUE",
+                        "value": "PROD"
+                    },
+                    {
+                        "to": "bfc66e2564e41c000b3238afe39dc0",
+                        "from": "a720ae451477b3b99034095fb72215",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "36da1c52b7e93bfe61e083ae7c00c4",
+                        "type": "ALWAYS",
+                        "value": ""
+                    },
+                    {
+                        "to": "RunTests",
+                        "from": "bc80f5badd7f5fd2a6b012e814dfb4",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "a720ae451477b3b99034095fb72215",
+                        "from": "RunTests",
+                        "type": "VALUE",
+                        "value": "TEST"
+                    },
+                    {
+                        "to": "bc80f5badd7f5fd2a6b012e814dfb4",
+                        "from": "c0bdd77a3d5c01e149f643cd5ac8da",
+                        "type": "SUCCESS",
+                        "value": ""
+                    },
+                    {
+                        "to": "bc80f5badd7f5fd2a6b012e814dfb4",
+                        "from": "Always Apply Image Tags from YAML",
+                        "type": "VALUE",
+                        "value": "true\nTrue\nTRUE"
+                    }
+                ],
+                "offsets": [
+                    {
+                        "name": "a720ae451477b3b99034095fb72215",
+                        "x": -234.53703703703707,
+                        "y": 760,
+                        "h": 80,
+                        "w": 420
+                    },
+                    {
+                        "name": "Always Apply Image Tags from YAML",
+                        "x": -178.51851851851853,
+                        "y": 260,
+                        "h": 70,
+                        "w": 470
+                    },
+                    {
+                        "name": "bc80f5badd7f5fd2a6b012e814dfb4",
+                        "x": -73.61111111111114,
+                        "y": 510,
+                        "h": 80,
+                        "w": 280
+                    },
+                    {
+                        "name": "RunTests",
+                        "x": -64.22839506172846,
+                        "y": 640,
+                        "h": 70,
+                        "w": 300
+                    },
+                    {
+                        "name": "36da1c52b7e93bfe61e083ae7c00c4",
+                        "x": -115,
+                        "y": 130,
+                        "h": 80,
+                        "w": 340
+                    },
+                    {
+                        "name": "bfc66e2564e41c000b3238afe39dc0",
+                        "x": 35.46296296296293,
+                        "y": 890,
+                        "h": 80,
+                        "w": 120
+                    },
+                    {
+                        "name": "c0bdd77a3d5c01e149f643cd5ac8da",
+                        "x": -159.53703703703707,
+                        "y": 380,
+                        "h": 80,
+                        "w": 270
+                    }
+                ],
+                "layoutMode": "auto",
+                "type": "graph",
+                "name": "b4caf077-ee5f-42da-89a1-8cf91070bbb0",
+                "children": [
+                    {
+                        "name": "36da1c52b7e93bfe61e083ae7c00c4",
+                        "componentTag": {
+                            "objectType": "Component",
+                            "name": "Kubernetes",
+                            "description": "",
+                            "color": "#008ABF"
+                        },
+                        "properties": [
+                            {
+                                "name": "activity.componentProcess.name",
+                                "value": "Process and Apply YAML File"
+                            },
+                            {
+                                "name": "maxCompIteration",
+                                "value": "100"
+                            },
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "multiComponentEnvironmentIterator",
+                        "children": [{
+                            "properties": [
+                                {
+                                    "name": "runOnlyOnFirst",
+                                    "value": "false"
+                                },
+                                {
+                                    "name": "failFast",
+                                    "value": "false"
+                                }
+                            ],
+                            "type": "componentEnvironmentIterator",
+                            "name": "657e71e4439054d19ccd5ad86153ca",
+                            "children": [{
+                                "status": "Active",
+                                "type": "inventoryVersionDiff",
+                                "name": "28784bbd-9623-4857-8cda-bdf5690b3deb",
+                                "children": [{
+                                    "componentProcessName": "Process and Apply YAML File",
+                                    "allowFailure": false,
+                                    "properties": {"activity.componentProcess.name": "Process and Apply YAML File"},
+                                    "type": "componentProcess",
+                                    "name": "Process and Apply YAML File",
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    {
+                        "propertyName": "${p?:environment\/alwaysApplyVersionsFromYaml}",
+                        "type": "switch",
+                        "name": "Always Apply Image Tags from YAML",
+                        "children": []
+                    },
+                    {
+                        "name": "c0bdd77a3d5c01e149f643cd5ac8da",
+                        "componentTag": {
+                            "objectType": "Component",
+                            "name": "kubernetes.image",
+                            "description": "",
+                            "color": "#FFFFFF"
+                        },
+                        "properties": [
+                            {
+                                "name": "activity.componentProcess.name",
+                                "value": "Update Inventory"
+                            },
+                            {
+                                "name": "maxCompIteration",
+                                "value": "100"
+                            },
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "multiComponentEnvironmentIterator",
+                        "children": [{
+                            "properties": [
+                                {
+                                    "name": "runOnlyOnFirst",
+                                    "value": "false"
+                                },
+                                {
+                                    "name": "failFast",
+                                    "value": "false"
+                                }
+                            ],
+                            "type": "componentEnvironmentIterator",
+                            "name": "c6a44d294e7278fa36fd92b1ca6810",
+                            "children": [{
+                                "status": "Active",
+                                "type": "inventoryVersionDiff",
+                                "name": "2a9e400a-8210-4b1f-99db-f815ccfb12c1",
+                                "children": [{
+                                    "componentProcessName": "Update Inventory",
+                                    "allowFailure": false,
+                                    "properties": {"activity.componentProcess.name": "Update Inventory"},
+                                    "type": "componentProcess",
+                                    "name": "Update Inventory",
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    {
+                        "name": "a720ae451477b3b99034095fb72215",
+                        "componentTag": {
+                            "objectType": "Component",
+                            "name": "Tests",
+                            "description": "",
+                            "color": "#17AF4B"
+                        },
+                        "properties": [
+                            {
+                                "name": "activity.componentProcess.name",
+                                "value": "RunPerfTests"
+                            },
+                            {
+                                "name": "maxCompIteration",
+                                "value": "100"
+                            },
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "runOnlyOnFirst",
+                                "value": "false"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "multiComponentEnvironmentIterator",
+                        "children": [{
+                            "properties": [
+                                {
+                                    "name": "runOnlyOnFirst",
+                                    "value": "false"
+                                },
+                                {
+                                    "name": "failFast",
+                                    "value": "false"
+                                }
+                            ],
+                            "type": "componentEnvironmentIterator",
+                            "name": "55ac894bbbbee6cd420c4f5fed43d3",
+                            "children": [{
+                                "type": "operationalProcessFilter",
+                                "name": "c1e0328e-f71c-4363-87ed-6110d7ae9f6d",
+                                "children": [{
+                                    "componentProcessName": "RunPerfTests",
+                                    "allowFailure": false,
+                                    "properties": {"activity.componentProcess.name": "RunPerfTests"},
+                                    "type": "componentProcess",
+                                    "name": "AutomatedTesting",
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    {
+                        "propertyName": "${p:environment.name}",
+                        "type": "switch",
+                        "name": "RunTests",
+                        "children": []
+                    },
+                    {
+                        "type": "finish",
+                        "name": "bfc66e2564e41c000b3238afe39dc0",
+                        "children": []
+                    },
+                    {
+                        "name": "bc80f5badd7f5fd2a6b012e814dfb4",
+                        "properties": [
+                            {
+                                "name": "activity.componentProcess.name",
+                                "value": "CreateOwnerIndex"
+                            },
+                            {
+                                "name": "maxCompIteration",
+                                "value": "100"
+                            },
+                            {
+                                "name": "maxIteration",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "failFast",
+                                "value": "false"
+                            }
+                        ],
+                        "type": "multiComponentEnvironmentIterator",
+                        "children": [{
+                            "properties": [],
+                            "type": "componentEnvironmentIterator",
+                            "name": "c994b29df87536c7d7afdce0b2aaae",
+                            "children": [{
+                                "status": "Active",
+                                "type": "inventoryVersionDiff",
+                                "name": "a475e52a-cddd-458b-b60f-b03d11945a4e",
+                                "children": [{
+                                    "componentProcessName": "CreateOwnerIndex",
+                                    "allowFailure": false,
+                                    "properties": {"activity.componentProcess.name": "CreateOwnerIndex"},
+                                    "type": "componentProcess",
+                                    "name": "PerformDatabaseOps",
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    }
+                ]
+            },
+            "propDefs": [],
+            "versionPresets": []
+        }],
+        "genericProcesses": [],
+        "tagRequirements": [{
+            "type": "EQUALS",
+            "number": 1,
+            "tag": {
+                "objectType": "Component",
+                "name": "Kubernetes",
+                "description": "",
+                "color": "#008ABF"
+            }
+        }],
+        "enforceCompleteSnapshots": false,
+        "environmentTemplates": [
+            {
+                "name": "LOCAL",
+                "description": "",
+                "color": "#17AF4B",
+                "requireApproval": false,
+                "noSelfApprovals": false,
+                "lockSnapshots": false,
+                "requireSnapshots": false,
+                "cleanupDaysToKeep": 0,
+                "cleanupCountToKeep": 0,
+                "enableProcessHistoryCleanup": false,
+                "useSystemDefaultDays": true,
+                "historyCleanupDaysToKeep": 365,
+                "propDefs": [{
+                    "name": "alwaysApplyVersionsFromYaml",
+                    "label": "Always Apply Image Tags from YAML",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "value": "false",
+                    "required": false,
+                    "description": "If set to true, container image tags specified in the yaml will always be applied (container image tags specified in the UrbanCode Deploy user interface will be ignored).",
+                    "placeholder": ""
+                }],
+                "resourceTemplate": {
+                    "name": "Kubernetes Resource Template",
+                    "resources": {
+                        "name": "Kubernetes Resource Template",
+                        "path": "\/Kubernetes Resource Template",
+                        "parentName": "",
+                        "tags": [],
+                        "prototype": false,
+                        "children": [{
+                            "name": "Kubernetes",
+                            "path": "\/Kubernetes Resource Template\/Kubernetes",
+                            "description": "",
+                            "parentName": "Kubernetes Resource Template",
+                            "tags": [],
+                            "prototype": false,
+                            "children": [{
+                                "name": "Agent Prototype",
+                                "path": "\/Kubernetes Resource Template\/Kubernetes\/Agent Prototype",
+                                "description": "Agent Prototype",
+                                "parentName": "Kubernetes",
+                                "role": "Agent Placeholder",
+                                "roleProperties": {
+                                    "name": "Agent Placeholder",
+                                    "properties": [{
+                                        "name": "agentNamePatterns",
+                                        "value": "mrad0cker",
+                                        "description": "",
+                                        "secure": false
+                                    }]
+                                },
+                                "tags": [],
+                                "prototype": false,
+                                "children": [{
+                                    "name": "Kubernetes",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "Kubernetes",
+                                        "description": "",
+                                        "color": "#008ABF"
+                                    },
+                                    "path": "\/Kubernetes Resource Template\/Kubernetes\/Agent Prototype\/Kubernetes",
+                                    "description": "",
+                                    "parentName": "Agent Prototype",
+                                    "tags": [],
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    "description": ""
+                },
+                "versionConditions": [],
+                "exemptProcesses": []
+            },
+            {
+                "name": "PROD",
+                "description": "",
+                "color": "#17AF4A",
+                "requireApproval": false,
+                "noSelfApprovals": false,
+                "lockSnapshots": false,
+                "requireSnapshots": false,
+                "cleanupDaysToKeep": 0,
+                "cleanupCountToKeep": 0,
+                "enableProcessHistoryCleanup": false,
+                "useSystemDefaultDays": true,
+                "historyCleanupDaysToKeep": 365,
+                "propDefs": [{
+                    "name": "alwaysApplyVersionsFromYaml",
+                    "label": "Always Apply Image Tags from YAML",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "value": "false",
+                    "required": false,
+                    "description": "If set to true, container image tags specified in the yaml will always be applied (container image tags specified in the UrbanCode Deploy user interface will be ignored).",
+                    "placeholder": ""
+                }],
+                "resourceTemplate": {
+                    "name": "Kubernetes Resource Template",
+                    "resources": {
+                        "name": "Kubernetes Resource Template",
+                        "path": "\/Kubernetes Resource Template",
+                        "parentName": "",
+                        "tags": [],
+                        "prototype": false,
+                        "children": [{
+                            "name": "Kubernetes",
+                            "path": "\/Kubernetes Resource Template\/Kubernetes",
+                            "description": "",
+                            "parentName": "Kubernetes Resource Template",
+                            "tags": [],
+                            "prototype": false,
+                            "children": [{
+                                "name": "Agent Prototype",
+                                "path": "\/Kubernetes Resource Template\/Kubernetes\/Agent Prototype",
+                                "description": "Agent Prototype",
+                                "parentName": "Kubernetes",
+                                "role": "Agent Placeholder",
+                                "roleProperties": {
+                                    "name": "Agent Placeholder",
+                                    "properties": [{
+                                        "name": "agentNamePatterns",
+                                        "value": "mrad0cker",
+                                        "description": "",
+                                        "secure": false
+                                    }]
+                                },
+                                "tags": [],
+                                "prototype": false,
+                                "children": [{
+                                    "name": "Kubernetes",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "Kubernetes",
+                                        "description": "",
+                                        "color": "#008ABF"
+                                    },
+                                    "path": "\/Kubernetes Resource Template\/Kubernetes\/Agent Prototype\/Kubernetes",
+                                    "description": "",
+                                    "parentName": "Agent Prototype",
+                                    "tags": [],
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    "description": ""
+                },
+                "versionConditions": [],
+                "exemptProcesses": []
+            },
+            {
+                "name": "QA",
+                "description": "",
+                "color": "#00B2EF",
+                "requireApproval": false,
+                "noSelfApprovals": false,
+                "lockSnapshots": false,
+                "requireSnapshots": false,
+                "cleanupDaysToKeep": 0,
+                "cleanupCountToKeep": 0,
+                "enableProcessHistoryCleanup": false,
+                "useSystemDefaultDays": true,
+                "historyCleanupDaysToKeep": 365,
+                "propDefs": [{
+                    "name": "alwaysApplyVersionsFromYaml",
+                    "label": "Always Apply Image Tags from YAML",
+                    "pattern": "",
+                    "type": "TEXT",
+                    "value": "false",
+                    "required": false,
+                    "description": "If set to true, container image tags specified in the yaml will always be applied (container image tags specified in the UrbanCode Deploy user interface will be ignored).",
+                    "placeholder": ""
+                }],
+                "resourceTemplate": {
+                    "name": "Kubernetes Resource Template",
+                    "resources": {
+                        "name": "Kubernetes Resource Template",
+                        "path": "\/Kubernetes Resource Template",
+                        "parentName": "",
+                        "tags": [],
+                        "prototype": false,
+                        "children": [{
+                            "name": "Kubernetes",
+                            "path": "\/Kubernetes Resource Template\/Kubernetes",
+                            "description": "",
+                            "parentName": "Kubernetes Resource Template",
+                            "tags": [],
+                            "prototype": false,
+                            "children": [{
+                                "name": "Agent Prototype",
+                                "path": "\/Kubernetes Resource Template\/Kubernetes\/Agent Prototype",
+                                "description": "Agent Prototype",
+                                "parentName": "Kubernetes",
+                                "role": "Agent Placeholder",
+                                "roleProperties": {
+                                    "name": "Agent Placeholder",
+                                    "properties": [{
+                                        "name": "agentNamePatterns",
+                                        "value": "mrad0cker",
+                                        "description": "",
+                                        "secure": false
+                                    }]
+                                },
+                                "tags": [],
+                                "prototype": false,
+                                "children": [{
+                                    "name": "Kubernetes",
+                                    "componentTag": {
+                                        "objectType": "Component",
+                                        "name": "Kubernetes",
+                                        "description": "",
+                                        "color": "#008ABF"
+                                    },
+                                    "path": "\/Kubernetes Resource Template\/Kubernetes\/Agent Prototype\/Kubernetes",
+                                    "description": "",
+                                    "parentName": "Agent Prototype",
+                                    "tags": [],
+                                    "prototype": false,
+                                    "children": []
+                                }]
+                            }]
+                        }]
+                    },
+                    "description": ""
+                },
+                "versionConditions": [],
+                "exemptProcesses": []
+            }
+        ],
+        "propDefs": [],
+        "statuses": []
+    }
+}

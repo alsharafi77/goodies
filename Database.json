@@ -1,0 +1,174 @@
+{
+    "name": "Database",
+    "description": "Component to perform any required database operations",
+    "created": 1520544770660,
+    "componentType": "STANDARD",
+    "ignoreQualifiers": 0,
+    "importAutomatically": false,
+    "useVfs": true,
+    "active": true,
+    "deleted": false,
+    "defaultVersionType": "FULL",
+    "cleanupDaysToKeep": 0,
+    "cleanupCountToKeep": 0,
+    "envPropDefs": [],
+    "resPropDefs": [],
+    "versionPropDefs": [],
+    "propSheetGroup": {"propSheets": [
+        {
+            "name": "template",
+            "properties": []
+        },
+        {
+            "name": "custom",
+            "properties": []
+        }
+    ]},
+    "processes": [{
+        "name": "CreateOwnerIndex",
+        "description": "",
+        "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+        "takesVersion": true,
+        "inventoryActionType": "ADD",
+        "status": "Active",
+        "configActionType": "ADD",
+        "active": true,
+        "path": "components\/1620787e-a6da-f301-cfcf-32c876a22d26\/processes\/162079bb-069f-5781-78c6-6a0fd859398f",
+        "deleted": false,
+        "propDefs": [],
+        "rootActivity": {
+            "edges": [
+                {
+                    "to": "Download Artifacts",
+                    "type": "ALWAYS",
+                    "value": ""
+                },
+                {
+                    "to": "Execute SQL Scripts",
+                    "from": "Download Artifacts",
+                    "type": "SUCCESS",
+                    "value": ""
+                },
+                {
+                    "to": "98b774335fa8802145fd3493187c28",
+                    "from": "Execute SQL Scripts",
+                    "type": "SUCCESS",
+                    "value": ""
+                }
+            ],
+            "offsets": [
+                {
+                    "name": "Download Artifacts",
+                    "x": -75,
+                    "y": 180,
+                    "h": 70,
+                    "w": 260
+                },
+                {
+                    "name": "Execute SQL Scripts",
+                    "x": -80,
+                    "y": 350,
+                    "h": 70,
+                    "w": 270
+                },
+                {
+                    "name": "98b774335fa8802145fd3493187c28",
+                    "x": -5,
+                    "y": 520,
+                    "h": 80,
+                    "w": 120
+                }
+            ],
+            "layoutMode": "auto",
+            "type": "graph",
+            "name": "a00b5238-aa41-4996-847f-9b8d86b8d664",
+            "children": [
+                {
+                    "type": "finish",
+                    "name": "98b774335fa8802145fd3493187c28",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": false,
+                    "showHidden": false,
+                    "impersonationUseSudo": false,
+                    "pluginVersion": 29,
+                    "commandName": "Download Artifacts",
+                    "pluginName": "IBM UrbanCode Deploy Versioned File Storage",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "directoryOffset": ".",
+                        "artifactSetBaseDir": "",
+                        "fileIncludePatterns": "**\/*",
+                        "fileExcludePatterns": "",
+                        "syncMode": "true",
+                        "fullVerification": "true",
+                        "setFileExecuteBits": "false",
+                        "verifyFileIntegrity": "false",
+                        "versionId": "${p:version.id}",
+                        "serverUrl": "${p:server.url}",
+                        "compId": "${p:component.id}",
+                        "resId": "${p:resource.id}",
+                        "charset": "",
+                        "label": ""
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "Download Artifacts",
+                    "children": []
+                },
+                {
+                    "allowFailure": false,
+                    "useImpersonation": false,
+                    "showHidden": false,
+                    "impersonationUseSudo": false,
+                    "pluginVersion": 10,
+                    "commandName": "Execute SQL Scripts",
+                    "pluginName": "SQL-JDBC",
+                    "authTokenRestriction": "20000001-0001-0001-0001-000000000000",
+                    "properties": {
+                        "jdbcDriver": "com.ibm.db2.jcc.DB2Driver",
+                        "jdbcJar": "${p:componentProcess.defaultWorkDir}\/db2jcc.jar",
+                        "connectionString": "${p:dbConnectionURL}",
+                        "username": "db2inst1",
+                        "password": "crypt_v1{AES\/CBC\/PKCS5Padding|aes128keyk3yq|4f6GvnzfuuOHVOb5Qacjtw==|LaFKj3nZqc3yOMlPhGVAVw==}",
+                        "passScript": "",
+                        "files": "",
+                        "includes": "**\/*.sql",
+                        "excludes": "",
+                        "delimiter": ";",
+                        "autocommit": "false",
+                        "print": "false",
+                        "onerror": "abort",
+                        "keepformat": "",
+                        "showWarnings": "",
+                        "treatWarningsAsErrors": ""
+                    },
+                    "cachedAuthTokenRestriction": {
+                        "name": "System Default",
+                        "description": "Used by default for any plugin steps without a specified token restriction",
+                        "restrictions": [{
+                            "verb": "ALL",
+                            "url": "\/*"
+                        }]
+                    },
+                    "type": "plugin",
+                    "name": "Execute SQL Scripts",
+                    "children": []
+                }
+            ]
+        }
+    }],
+    "configTemplates": [],
+    "genericProcesses": [],
+    "teamMappings": [],
+    "tags": []
+}
